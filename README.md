@@ -49,10 +49,10 @@ Expected Output
 
 
 ### 🛠️ Roadmap
-✅ Implement basic stock price prediction
-✅ Add model saving/loading
-🔲 Enhance prediction with more ML models (LSTMs, Random Forests)
-🔲 Create a web UI for stock prediction visualization
+- ✅ Implement basic stock price prediction
+- ✅ Add model saving/loading
+- 🔲 Enhance prediction with more ML models (LSTMs, Random Forests)
+- 🔲 Create a web UI for stock prediction visualization
 
 
 

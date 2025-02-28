@@ -40,7 +40,7 @@ df['PCT_change'] = (df[close_col] - df['Open']) / df['Open'] * 100.0
 df = df[[close_col, 'HL_PCT', 'PCT_change', 'Volume']]
 
 # Define forecast parameters
-forecast_out = int(math.ceil(0.1 * len(df)))  # Predict 10% into the future
+forecast_out = int(math.ceil(0.01 * len(df)))
 print(f"Forecasting {forecast_out} days into the future.")
 
 # Label column for prediction
@@ -49,15 +49,22 @@ df['label'] = df[close_col].shift(-forecast_out)
 # Handle missing data
 df.fillna(-9999, inplace=True)
 
-# Prepare feature and label arrays
+df.dropna(inplace=True)
+
 x = np.array(df.drop(columns=['label']))
-x = preprocessing.scale(x)  # Standardize feature set
-
-x_lately = x[-forecast_out:]  # Data for future predictions
-x = x[:-forecast_out]  # Training data
-
-df.dropna(inplace=True)  # Remove remaining NaNs after shifting
 y = np.array(df['label'])
+
+print(f"Length of x: {len(x)}, Length of y: {len(y)}")
+
+x = preprocessing.scale(x)
+
+# Ensure forecast_out is valid
+if forecast_out >= len(df):
+    raise ValueError(f"forecast_out ({forecast_out}) is too large for dataset of size {len(df)}.")
+
+x_lately = x[-forecast_out:]
+x = x[:-forecast_out]
+y = y[:-forecast_out]
 
 # Split dataset
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)

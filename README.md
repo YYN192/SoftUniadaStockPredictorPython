@@ -11,11 +11,7 @@ The project is designed for educational purposes and demonstrates key concepts i
 - [Features](#-features)  
 - [Installation](#-installation)  
 - [Usage](#-usage)  
-- [Project Structure](#-project-structure)  
 - [Roadmap](#-roadmap)  
-- [Contributing](#-contributing)  
-- [License](#-license)  
-- [Acknowledgments](#-acknowledgments)  
 
 ---
 

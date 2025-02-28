@@ -34,7 +34,7 @@ pip install numpy pandas yfinance scikit-learn matplotlib
 ---
 
 
-###🚀 Usage
+### 🚀 Usage
 
 ```bash
 python main.py
